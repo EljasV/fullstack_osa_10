@@ -1,3 +1,5 @@
+import platformTheme from "./platformTheme";
+
 const theme = {
 
     colors: {
@@ -7,14 +9,14 @@ const theme = {
         textSecondary: "#586069",
         languageBackground: "#2626d2",
         languageText: "#FFF",
-        errorColor:"#d73a4a"
+        errorColor: "#d73a4a"
     },
     fontSizes: {
         body: 14,
         subheading: 16
     },
     fonts: {
-        main: "System"
+        main: platformTheme.fonts.main
     },
     fontWeights: {
         normal: "400",
