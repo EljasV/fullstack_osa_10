@@ -11,7 +11,6 @@ const apolloClient = createApolloClient();
 
 
 const App = () => {
-    console.log(Constants.expoConfig);
 
     return <>
         <NativeRouter>

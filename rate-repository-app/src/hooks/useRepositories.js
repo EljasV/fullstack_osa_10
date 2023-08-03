@@ -3,18 +3,13 @@ import {useQuery} from "@apollo/client";
 import {GET_REPOSITORIES} from "../graphql/queries";
 
 const useRepositories = () => {
-    const [repositories, setRepositories] = useState();
-
 
     const {data, error, loading, client} = useQuery(GET_REPOSITORIES, {fetchPolicy: "cache-and-network"});
 
-    if (!loading && data !== repositories) {
-        const repos = data.edges
-        setRepositories(repos);
-        console.log(repos)
-    }
+    const repositories = !loading ? data.repositories.edges.map(value => value.node) : []
+
     return {
-        data, loading, refetch: () => {
+        repositories, loading, refetch: () => {
             client.refetchQueries({})
         }
     };
