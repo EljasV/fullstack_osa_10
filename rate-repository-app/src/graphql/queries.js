@@ -1,7 +1,7 @@
 import {gql} from '@apollo/client';
 
 export const GET_REPOSITORIES = gql`
-query ExampleQuery {
+query {
   repositories {
     edges {
       node {
@@ -16,5 +16,15 @@ query ExampleQuery {
       }
     }
   }
+}
+`;
+
+
+export const ME=gql`
+query {
+    me {
+        id
+        username
+    }
 }
 `;
