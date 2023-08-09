@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
 })
 
 export const RepositoryItem = (props) => {
-    return <View style={styles.container}>
+    return <View style={styles.container} testID="repositoryItem">
         <View style={styles.identification}>
             <Image source={{uri: props.item.ownerAvatarUrl}} style={styles.avatarImage}/>
             <View style={styles.textualIdentification}>

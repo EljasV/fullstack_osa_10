@@ -14,17 +14,19 @@ const styles = StyleSheet.create({
 
 const ItemSeparator = () => <View style={styles.separator}/>;
 
+const RepositoryListContainer = props => <FlatList
+    style={styles.container}
+    data={props.repositories}
+    ItemSeparatorComponent={ItemSeparator}
+    renderItem={RepositoryItem}/>;
+
 const RepositoryList = () => {
 
     const {repositories} = useRepositories();
 
     return (
-        <FlatList
-            style={styles.container}
-            data={repositories}
-            ItemSeparatorComponent={ItemSeparator}
-            renderItem={RepositoryItem}/>
+        <RepositoryListContainer repositories={repositories}/>
     );
 };
 
-export default RepositoryList;
+export {RepositoryList, RepositoryListContainer};
