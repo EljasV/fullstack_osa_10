@@ -34,6 +34,22 @@ const validationSchema = yup.object().shape({
 });
 
 
+const SignInContainer = (props) => {
+    return <View style={styles.container}>
+        <Formik initialValues={{username: "", password: ""}} onSubmit={props.onSubmit} style={styles.container}
+                validationSchema={validationSchema}>
+            {({handleSubmit}) =>
+                <View>
+                    <FormikTextInput name="username" placeholder="Username"/>
+                    <FormikTextInput name="password" placeholder="Password" secureTextEntry/>
+                    <Pressable onPress={handleSubmit} style={styles.button} testID="SubmitButton"><Text style={styles.buttonText}>Sign
+                        in</Text></Pressable>
+                </View>
+            }
+        </Formik>
+    </View>
+};
+
 const SignIn = () => {
 
     const [signIn] = useSignIn();
@@ -49,21 +65,7 @@ const SignIn = () => {
             console.log(e);
         }
     }
-
-
-    return <View style={styles.container}>
-        <Formik initialValues={{username: "", password: ""}} onSubmit={onSubmit} style={styles.container}
-                validationSchema={validationSchema}>
-            {({handleSubmit}) =>
-                <View>
-                    <FormikTextInput name="username" placeholder="Username"/>
-                    <FormikTextInput name="password" placeholder="Password" secureTextEntry/>
-                    <Pressable onPress={handleSubmit} style={styles.button}><Text style={styles.buttonText}>Sign
-                        in</Text></Pressable>
-                </View>
-            }
-        </Formik>
-    </View>;
+    return <SignInContainer onSubmit={onSubmit}/>;
 };
 
-export default SignIn;
+export {SignIn, SignInContainer};
