@@ -41,6 +41,7 @@ const AppBar = () => {
             <BarTab link="/" text="Repositories"/>
 
             {!loading && data.me === null ? <BarTab link="/signin" text="Sign in"/> : null}
+            {!loading && data.me === null ? <BarTab link="/signup" text="Sign up"/> : null}
             {!loading && data.me !== null ? <BarTab link={"/reviewCreation"} text={"Create a review"}/> : null}
             {!loading && data.me !== null ? <BarTab link="/signout" text="Sign out"/> : null}
         </ScrollView>
