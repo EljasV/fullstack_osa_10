@@ -14,6 +14,7 @@ query ($orderBy: AllRepositoriesOrderBy, $orderDirection: OrderDirection, $searc
         reviewCount
         stargazersCount
         ownerAvatarUrl
+        description
       }
     }
   }
@@ -33,6 +34,7 @@ query($id: ID!) {
         stargazersCount
         ownerAvatarUrl
         url
+        description
         reviews {
             edges {
                 node {
@@ -54,10 +56,23 @@ query($id: ID!) {
 
 
 export const ME = gql`
-query {
+query ($includeReviews: Boolean = false){
     me {
         id
         username
+        reviews @include(if: $includeReviews) {
+            edges {
+                node {
+                    id
+                    text
+                    rating
+                    createdAt
+                    repository {
+                        fullName
+                    }
+                }
+            }
+        }
     }
 }
 `;

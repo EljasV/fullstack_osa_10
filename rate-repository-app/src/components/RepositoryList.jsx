@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
     },
     separator: {
         height: 10,
-        backgroundColor: "#DDE"
+        backgroundColor: theme.colors.separatorColor
     },
     sortingContainer: {
         backgroundColor: theme.colors.textSecondary
