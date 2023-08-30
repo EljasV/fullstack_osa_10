@@ -8,7 +8,7 @@ mutation ($credentials: AuthenticateInput) {
 }
 `
 
-export const CREATE_REVIEW=gql`
+export const CREATE_REVIEW = gql`
 mutation ($review: CreateReviewInput) {
   createReview(review: $review) {
     repositoryId
@@ -17,10 +17,16 @@ mutation ($review: CreateReviewInput) {
 `
 
 
-export const CREATE_USER=gql`
+export const CREATE_USER = gql`
 mutation ($user: CreateUserInput) {
   createUser(user: $user) {
     id
   }
 }
 `
+
+export const DELETE_REVIEW = gql`
+mutation ($deleteReviewId: ID!) {
+  deleteReview(id: $deleteReviewId)
+}
+`;

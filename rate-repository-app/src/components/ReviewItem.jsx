@@ -1,4 +1,4 @@
-import {View,StyleSheet} from "react-native";
+import {View, StyleSheet} from "react-native";
 import Text from "./Text";
 import {format} from "date-fns";
 import theme from "../theme";
@@ -34,10 +34,10 @@ const styles = StyleSheet.create({
         alignSelf: "stretch",
     }
 })
-export const ReviewItem = ({item}) => {
+export const ReviewItem = ({item, children}) => {
     const date = Date.parse(item.createdAt)
 
-    return <View style={styles.reviewContainer}>
+    return <View><View style={styles.reviewContainer}>
         <View style={styles.reviewScoreContainer}><Text style={styles.reviewScoreText}
                                                         fontWeight={"bold"}>{item.rating}</Text></View>
         <View style={styles.reviewInfoContainer}>
@@ -45,5 +45,7 @@ export const ReviewItem = ({item}) => {
             <Text color={"textSecondary"}>{format(date, "dd.LL.yyyy")}</Text>
             <Text style={styles.reviewInfoText}>{item.text}</Text>
         </View>
+    </View>
+        {children}
     </View>
 }

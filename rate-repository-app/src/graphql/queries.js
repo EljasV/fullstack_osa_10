@@ -69,6 +69,7 @@ query ($includeReviews: Boolean = false){
                     createdAt
                     repository {
                         fullName
+                        id
                     }
                 }
             }
