@@ -22,7 +22,7 @@ query ($orderBy: AllRepositoriesOrderBy, $orderDirection: OrderDirection, $searc
 `;
 
 export const GET_REPOSITORY = gql`
-query($id: ID!) {
+query($id: ID!, $first: Int!, $after: String) {
     repository(id: $id) {
         id
         fullName
@@ -35,7 +35,7 @@ query($id: ID!) {
         ownerAvatarUrl
         url
         description
-        reviews {
+        reviews (first: $first, after: $after){
             edges {
                 node {
                     id
@@ -48,6 +48,10 @@ query($id: ID!) {
                     }
                 }
                 cursor
+            }
+            pageInfo {
+                hasNextPage
+                endCursor
             }
         }
     }

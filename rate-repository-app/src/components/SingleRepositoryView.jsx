@@ -28,18 +28,22 @@ const Separator = () => {
 const SingleRepositoryView = () => {
 
     const params = useParams();
-    const {loading, repository} = useRepository(params.id);
+    const {loading, repository, fetchMore} = useRepository({id: params.id, first: 2});
 
 
     const reviewData = !loading ? repository.reviews.edges.map(edge => edge.node) : [];
 
+
+    const onEndReached = () => {
+        fetchMore()
+    }
 
     return !loading ?
         <FlatList data={reviewData}
                   renderItem={({item}) => <ReviewItem item={{title: item.user.username, ...item}}/>}
                   ItemSeparatorComponent={Separator}
                   ListHeaderComponent={() => <RepositoryInfo item={repository}/>}
-        />
+                  onEndReached={onEndReached}/>
         : <></>
 }
 
